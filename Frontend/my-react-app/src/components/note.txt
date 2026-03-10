@@ -1,0 +1,23 @@
+Dashboard
+
+Masters
+   Customer Master
+   Branch Master
+   Account Type Master
+
+Transactions
+   Customer Registration
+   Account Opening
+   Deposit
+   Withdrawal
+   Fund Transfer
+
+Views
+   Customer Details
+   Account Summary
+   Transaction History
+
+Reports
+   Account Statement
+   Daily Transactions
+   Customer Report

@@ -1,46 +1,67 @@
-import React from "react";
-import { FaTachometerAlt, FaDatabase, FaExchangeAlt, FaEye, FaFileAlt } from "react-icons/fa";
-import "./sidebar.css";
+import { useState } from "react";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
+import "./sidebar.css"
 
-const SideNavigation = () => {
-  return (
-    <div className="sidebar">
+const Sidebar = () => {
 
-      <h2 className="logo">Utility Bank</h2>
+const [mastersOpen, setMastersOpen] = useState(false);
 
-      <ul className="menu">
+return (
+<div className="sidebar">
 
-        <li>
-          <FaTachometerAlt />
-          <span> Dashboard</span>
-        </li>
+<h2 className="logo">Utility Bank</h2>
 
-        <li className="menu-title">Masters</li>
-        <li>Customer Master</li>
-        <li>Branch Master</li>
-        <li>Account Type Master</li>
+{/* Masters */}
+<div 
+className="menu-title"
+onClick={() => setMastersOpen(!mastersOpen)}
+>
 
-        <li className="menu-title">Transactions</li>
-        <li>Customer Registration</li>
-        <li>Account Opening</li>
-        <li>Deposit</li>
-        <li>Withdrawal</li>
-        <li>Fund Transfer</li>
+Masters
 
-        <li className="menu-title">Views</li>
-        <li>Customer Details</li>
-        <li>Account Summary</li>
-        <li>Transaction History</li>
+<span className="arrow">
+{mastersOpen ? <FaChevronDown /> : <FaChevronRight />}
+</span>
 
-        <li className="menu-title">Reports</li>
-        <li>Account Statement</li>
-        <li>Daily Transactions</li>
-        <li>Customer Report</li>
+</div>
 
-      </ul>
+{mastersOpen && (
+<div className="submenu">
 
-    </div>
-  );
+<div className="menu-item">Customer Master</div>
+<div className="menu-item">Branch Master</div>
+<div className="menu-item">Account Type Master</div>
+
+</div>
+)}
+{/* Transactions */}
+<div 
+className="menu-title"
+onClick={() => setTransactionsOpen(!mastersOpen)}
+>
+
+Masters
+
+<span className="arrow">
+{mastersOpen ? <FaChevronDown /> : <FaChevronRight />}
+</span>
+
+</div>
+
+{mastersOpen && (
+<div className="submenu">
+
+<div className="menu-item">Customer Master</div>
+<div className="menu-item">Branch Master</div>
+<div className="menu-item">Account Type Master</div>
+
+</div>
+)}
+
+
+
+</div>
+);
 };
 
-export default SideNavigation;
+export default Sidebar;
