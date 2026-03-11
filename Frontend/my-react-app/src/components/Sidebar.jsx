@@ -5,6 +5,10 @@ import "./sidebar.css"
 const Sidebar = () => {
 
 const [mastersOpen, setMastersOpen] = useState(false);
+const [transactionsOpen, setTransactionsOpen] = useState(false);
+const [viewsOpen, setViewsOpen] = useState(false);
+const [reportsOpen, setReportsOpen] = useState(false);
+
 
 return (
 <div className="sidebar">
@@ -37,25 +41,76 @@ Masters
 {/* Transactions */}
 <div 
 className="menu-title"
-onClick={() => setTransactionsOpen(!mastersOpen)}
+onClick={() => setTransactionsOpen(!transactionsOpen)}
 >
 
-Masters
+Transactions
 
 <span className="arrow">
-{mastersOpen ? <FaChevronDown /> : <FaChevronRight />}
+{transactionsOpen ? <FaChevronDown /> : <FaChevronRight />}
 </span>
 
 </div>
 
-{mastersOpen && (
+{transactionsOpen && (
 <div className="submenu">
 
-<div className="menu-item">Customer Master</div>
-<div className="menu-item">Branch Master</div>
-<div className="menu-item">Account Type Master</div>
+<div className="menu-item"> Customer Registration</div>
+<div className="menu-item">Account Opening</div>
+<div className="menu-item">Deposit</div>
+<div className="menu-item"> Withdrawal</div>
+<div className="menu-item">Fund Transfer</div>
 
 </div>
+
+)}
+{/* Views */}
+<div 
+className="menu-title"
+onClick={() => setViewsOpen(!viewsOpen)}
+>
+
+Views
+
+<span className="arrow">
+{viewsOpen ? <FaChevronDown /> : <FaChevronRight />}
+</span>
+
+</div>
+
+{viewsOpen && (
+<div className="submenu">
+
+<div className="menu-item">Customer Details</div>
+<div className="menu-item">Account Summary</div>
+<div className="menu-item">Transaction History</div>
+
+</div>
+
+)}
+{/* Reports */}
+<div 
+className="menu-title"
+onClick={() => setReportsOpen(!reportsOpen)}
+>
+
+Reports
+
+<span className="arrow">
+{reportsOpen ? <FaChevronDown /> : <FaChevronRight />}
+</span>
+
+</div>
+
+{reportsOpen && (
+<div className="submenu">
+
+<div className="menu-item">Account Statement</div>
+<div className="menu-item">Daily Transactions</div>
+<div className="menu-item">Customer Report</div>
+
+</div>
+
 )}
 
 

@@ -1,37 +1,60 @@
-.sidebar{
-width:260px;
-background:#2B7A57;
-color:white;
-padding:20px;
+.sidebar {
+width: 200px;
+height: calc(100vh - 40px);
+background: #3b7d59;
+color: white;
+padding: 20px;
+position: fixed;
+left: 0;
+top: 0;
+overflow-y: auto;
+overflow-x: hidden;
+padding-bottom: 50px;
+}
+.sidebar {
+display: flex;
+flex-direction: column;
+}
+body{
+overflow-x: hidden;
 }
 
-.menu-title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:10px;
-margin-top:15px;
-background:#245f45;
-border-radius:6px;
-cursor:pointer;
-font-weight:600;
+
+.logo {
+font-size: 22px;
+margin-bottom: 20px;
 }
 
-.submenu{
-padding-left:15px;
-margin-top:8px;
+.menu-title {
+background: #2f6849;
+padding: 10px;
+margin-top: 10px;
+border-radius: 6px;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
-.menu-item{
-padding:8px 10px;
-border-radius:6px;
-cursor:pointer;
+.submenu {
+margin-left: 10px;
+margin-top: 5px;
 }
 
-.menu-item:hover{
-background:#1F5E46;
+.menu-item {
+padding: 8px;
+cursor: pointer;
+white-space: nowrap;
 }
 
-.arrow{
-font-size:12px;
+.menu-item:hover {
+background: rgba(255,255,255,0.1);
+border-radius: 4px;
+}
+.sidebar::-webkit-scrollbar{
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb{
+    background-color: #2f6849;
+    border-radius: 10px;
 }

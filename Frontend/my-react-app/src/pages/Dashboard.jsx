@@ -1,9 +1,10 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
+// import "../App.css"
 
 function Dashboard() {
   return (
-      <div style={{ padding: "20px" }}>
+      <div className="dashboardheader">
         <h1>Dashboard</h1>
       </div>
 
