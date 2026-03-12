@@ -1,87 +1,172 @@
-import { useState } from "react";
-import { FaChevronDown, FaChevronRight } from "react-icons/fa";
-import "./sidebar.css";
+1️⃣ Admin Login
 
-const Sidebar = () => {
+Purpose: System management
 
-const [mastersOpen, setMastersOpen] = useState(false);
-const [transactionsOpen, setTransactionsOpen] = useState(false);
-const [viewsOpen, setViewsOpen] = useState(false);
-const [reportsOpen, setReportsOpen] = useState(false);
+Who uses it
 
-return (
-<div className="sidebar">
+Bank IT admin
 
-<h2 className="logo">Utility Bank</h2>
+System administrator
 
-{/* Masters */}
-<div className="menu-title" onClick={() => setMastersOpen(!mastersOpen)}>
+Access
+
+Manage Masters
+
+Create branches
+
+Create account types
+
+Manage users
+
+View all reports
+
+Example menu access:
+
+Dashboard
 Masters
-<span className="arrow">
-{mastersOpen ? <FaChevronDown /> : <FaChevronRight />}
-</span>
-</div>
-
-{mastersOpen && (
-<div className="submenu">
-<div className="menu-item">Customer Master</div>
-<div className="menu-item">Branch Master</div>
-<div className="menu-item">Account Type Master</div>
-</div>
-)}
-
-{/* Transactions */}
-<div className="menu-title" onClick={() => setTransactionsOpen(!transactionsOpen)}>
+   Customer Master
+   Branch Master
+   Account Type Master
 Transactions
-<span className="arrow">
-{transactionsOpen ? <FaChevronDown /> : <FaChevronRight />}
-</span>
-</div>
-
-{transactionsOpen && (
-<div className="submenu">
-<div className="menu-item">Customer Registration</div>
-<div className="menu-item">Account Opening</div>
-<div className="menu-item">Deposit</div>
-<div className="menu-item">Withdrawal</div>
-<div className="menu-item">Fund Transfer</div>
-</div>
-)}
-
-{/* Views */}
-<div className="menu-title" onClick={() => setViewsOpen(!viewsOpen)}>
 Views
-<span className="arrow">
-{viewsOpen ? <FaChevronDown /> : <FaChevronRight />}
-</span>
-</div>
-
-{viewsOpen && (
-<div className="submenu">
-<div className="menu-item">Customer Details</div>
-<div className="menu-item">Account Summary</div>
-<div className="menu-item">Transaction History</div>
-</div>
-)}
-
-{/* Reports */}
-<div className="menu-title" onClick={() => setReportsOpen(!reportsOpen)}>
 Reports
-<span className="arrow">
-{reportsOpen ? <FaChevronDown /> : <FaChevronRight />}
-</span>
-</div>
 
-{reportsOpen && (
-<div className="submenu">
-<div className="menu-item">Account Statement</div>
-<div className="menu-item">Daily Transactions</div>
-<div className="menu-item">Customer Report</div>
-</div>
-)}
+2️⃣ Bank Employee / Manager Login
 
-</div>
-);
+Purpose: Daily banking operations
+
+Who uses it
+
+Bank staff
+
+Branch manager
+
+Customer service officer
+
+Access
+
+Customer registration
+
+Account opening
+
+Deposit
+
+Withdrawal
+
+Fund transfer
+
+Customer details
+
+Example menu access:
+
+Dashboard
+Transactions
+   Customer Registration
+   Account Opening
+   Deposit
+   Withdrawal
+   Fund Transfer
+Views
+   Customer Details
+   Account Summary
+Reports
+3️⃣ Customer Login
+
+Purpose: Customer self-service
+
+Who uses it
+
+Bank customers
+
+Access
+
+Account summary
+
+Transaction history
+
+Fund transfer
+
+Download statement
+
+Profile update
+
+Example menu access:
+
+Dashboard
+Account Summary
+Fund Transfer
+Transaction History
+Download Statement
+Profile
+Logout
+
+Select Login Type
+
+[ Admin Login ]
+[ Employee Login ]
+[ Customer Login ]
+
+
+import React, { useState } from "react";
+import axios from "axios";
+
+const Login = () => {
+
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+
+      const res = await axios.post("http://localhost:5000/login",{
+        email,
+        password
+      });
+
+      console.log(res.data);
+
+      localStorage.setItem("token", res.data.token);
+
+      alert("Login Successful");
+
+    } catch (error) {
+
+      alert("Login Failed");
+
+    }
+  };
+
+  return (
+    <div style={{width:"300px",margin:"100px auto"}}>
+      <h2>Login</h2>
+
+      <form onSubmit={handleLogin}>
+
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
+        />
+
+        <br/><br/>
+
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e)=>setPassword(e.target.value)}
+        />
+
+        <br/><br/>
+
+        <button type="submit">Login</button>
+
+      </form>
+    </div>
+  );
 };
 
-export default Sidebar;
+export default Login;

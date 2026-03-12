@@ -1,28 +1,55 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Dashboard from "./pages/Dashboard";
+import {BrowserRouter,Routes,Route} from "react-router-dom";
 
-function App() {
-  return (
-    <Router>
+import Login from "./pages/Login";
+import AdminDashboard from "./pages/AdminDashboard";
+import EmployeeDashboard from "./pages/EmployeeDashboard";
+import CustomerDashboard from "./pages/CustomerDashboard";
 
-      <div style={{ display: "flex" }}>
+import ProtectedRoute from "./components/ProtectedRoute";
 
-        {/* Sidebar */}
-        <Sidebar />
+function App(){
 
-        {/* Main Content */}
-        <div style={{ padding: "20px", flex: 1 }}>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-          </Routes>
-        </div>
+return(
 
-      </div>
+<BrowserRouter>
 
-    </Router>
-  );
+<Routes>
+
+<Route path="/" element={<Login/>}/>
+
+<Route
+path="/admin"
+element={
+<ProtectedRoute role="admin">
+<AdminDashboard/>
+</ProtectedRoute>
+}
+/>
+
+<Route
+path="/employee"
+element={
+<ProtectedRoute role="employee">
+<EmployeeDashboard/>
+</ProtectedRoute>
+}
+/>
+
+<Route
+path="/customer"
+element={
+<ProtectedRoute role="user">
+<CustomerDashboard/>
+</ProtectedRoute>
+}
+/>
+
+</Routes>
+
+</BrowserRouter>
+
+)
+
 }
 
 export default App;
