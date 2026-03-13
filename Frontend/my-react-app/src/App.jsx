@@ -4,8 +4,8 @@ import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import CustomerDashboard from "./pages/CustomerDashboard";
-
 import ProtectedRoute from "./components/ProtectedRoute";
+import CustomerMaster from "./pages/CustomerMaster";
 
 function App(){
 
@@ -43,6 +43,15 @@ element={
 </ProtectedRoute>
 }
 />
+<Route
+path="/customer-master"
+element={
+<ProtectedRoute role="admin">
+<CustomerMaster/>
+</ProtectedRoute>
+}
+/>
+
 
 </Routes>
 

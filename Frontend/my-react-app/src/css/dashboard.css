@@ -1,0 +1,16 @@
+.dashboard-layout{
+display:flex;
+
+}
+
+.dashboard-content{
+margin-left:260px;
+padding:30px;
+width:100%;
+}
+
+/* when sidebar collapsed */
+
+.sidebar.collapsed + .dashboard-content{
+margin: left 100px;
+}

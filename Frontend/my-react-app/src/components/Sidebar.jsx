@@ -123,13 +123,17 @@
 
 
 import { useState } from "react";
-import { FaChevronDown, FaChevronRight } from "react-icons/fa";
+import { FaChevronDown, FaChevronRight, FaBars  } from "react-icons/fa";
+import { MdDashboard, MdAccountTree, MdSyncAlt, MdVisibility, MdAssessment } from "react-icons/md";
 import "./sidebar.css";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
 
 const role = localStorage.getItem("role");
+const navigate = useNavigate();
 
+const [collapsed,setCollapsed] = useState(false);
 const [mastersOpen, setMastersOpen] = useState(false);
 const [transactionsOpen, setTransactionsOpen] = useState(false);
 const [viewsOpen, setViewsOpen] = useState(false);
@@ -142,23 +146,46 @@ window.location.href = "/";
 };
 
 return (
-<div className="sidebar">
+<div className={`sidebar ${collapsed ? "collapsed":""}`}>
 
-<h2 className="logo">Utility Bank</h2>
+<div className="sidebar-header">
+
+<h2 className="logo">{collapsed ? "UB" : "Utility Bank"}</h2>
+
+<FaBars
+className="menu-toggle"
+onClick={()=>setCollapsed(!collapsed)}
+/>
+
+</div>
+
 
 {/* ADMIN ONLY */}
 {role === "admin" && (
 <>
-<div className="menu-title" onClick={() => setMastersOpen(!mastersOpen)}>
-Masters
+
+<div className="menu-title" title="Masters" onClick={() => setMastersOpen(!mastersOpen)}>
+    
+<div className="menu-left">
+<MdAccountTree className="menu-icon" />
+<span>Masters</span>
+</div>
+
 <span className="arrow">
 {mastersOpen ? <FaChevronDown /> : <FaChevronRight />}
 </span>
 </div>
 
 {mastersOpen && (
+
 <div className="submenu">
-<div className="menu-item">Customer Master</div>
+<div
+className="menu-item"
+onClick={()=>navigate("/customer-master")}
+>
+Customer Master
+</div>
+
 <div className="menu-item">Branch Master</div>
 <div className="menu-item">Account Type Master</div>
 </div>
@@ -169,8 +196,13 @@ Masters
 {/* ADMIN + EMPLOYEE */}
 {(role === "admin" || role === "employee") && (
 <>
-<div className="menu-title" onClick={() => setTransactionsOpen(!transactionsOpen)}>
-Transactions
+
+<div className="menu-title" title="Transactions" onClick={() => setTransactionsOpen(!transactionsOpen)}>
+<div className="menu-left">
+<MdSyncAlt className="menu-icon" />
+<span>Transactions</span>
+</div>
+
 <span className="arrow">
 {transactionsOpen ? <FaChevronDown /> : <FaChevronRight />}
 </span>
@@ -191,8 +223,12 @@ Transactions
 {/* ADMIN + EMPLOYEE */}
 {(role === "admin" || role === "employee") && (
 <>
-<div className="menu-title" onClick={() => setViewsOpen(!viewsOpen)}>
-Views
+<div className="menu-title" title="Views" onClick={() => setViewsOpen(!viewsOpen)}>
+<div className="menu-left">
+<MdVisibility className="menu-icon" />
+<span>Views</span>
+</div>
+
 <span className="arrow">
 {viewsOpen ? <FaChevronDown /> : <FaChevronRight />}
 </span>
@@ -211,8 +247,13 @@ Views
 {/* ADMIN + EMPLOYEE */}
 {(role === "admin" || role === "employee") && (
 <>
-<div className="menu-title" onClick={() => setReportsOpen(!reportsOpen)}>
-Reports
+
+<div className="menu-title" title="Reports"onClick={() => setReportsOpen(!reportsOpen)}>
+<div className="menu-left">
+<MdAssessment className="menu-icon" />
+<span>Reports</span>
+</div>
+
 <span className="arrow">
 {reportsOpen ? <FaChevronDown /> : <FaChevronRight />}
 </span>

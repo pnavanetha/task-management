@@ -1,17 +1,19 @@
 import Sidebar from "../components/Sidebar";
-import "../css/dashboard.css";
+import "../css/masters.css";
 
-const AdminDashboard = () => {
+const CustomerMaster = () => {
 
 return (
 
 <div className="dashboard-layout">
 
-<Sidebar />
+<Sidebar/>
 
 <div className="dashboard-content">
 
-<h1>Dashboard</h1>
+<h2>Customer Master</h2>
+
+{/* Your form here */}
 
 </div>
 
@@ -21,4 +23,4 @@ return (
 
 };
 
-export default AdminDashboard;
+export default CustomerMaster;

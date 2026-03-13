@@ -1,3 +1,143 @@
+{role === "user" && (
+<>
+<div className="menu-item">Dashboard</div>
+<div className="menu-item">Account Summary</div>
+<div className="menu-item">Fund Transfer</div>
+<div className="menu-item">Transaction History</div>
+<div className="menu-item">Download Statement</div>
+<div className="menu-item">Profile</div>
+</>
+)}
+
+
+import { useState } from "react";
+import { FaChevronDown, FaChevronRight, FaBars } from "react-icons/fa";
+import "./sidebar.css";
+
+const Sidebar = () => {
+
+const role = localStorage.getItem("role");
+
+const [collapsed,setCollapsed] = useState(false);
+const [mastersOpen,setMastersOpen] = useState(false);
+const [transactionsOpen,setTransactionsOpen] = useState(false);
+const [viewsOpen,setViewsOpen] = useState(false);
+const [reportsOpen,setReportsOpen] = useState(false);
+
+const logout = () => {
+localStorage.removeItem("token");
+localStorage.removeItem("role");
+window.location.href="/";
+};
+
+return (
+
+<div className={`sidebar ${collapsed ? "collapsed":""}`}>
+
+{/* TOP BAR */}
+
+<div className="sidebar-header">
+
+<h2 className="logo">{collapsed ? "UB" : "Utility Bank"}</h2>
+
+<FaBars
+className="menu-toggle"
+onClick={()=>setCollapsed(!collapsed)}
+/>
+
+</div>
+
+
+{/* ADMIN MENU */}
+
+{role === "admin" && (
+
+<>
+
+<div
+className="menu-title"
+onClick={()=>setMastersOpen(!mastersOpen)}
+>
+
+Masters
+
+<span className="arrow">
+{mastersOpen ? <FaChevronDown/> : <FaChevronRight/>}
+</span>
+
+</div>
+
+{mastersOpen && !collapsed && (
+
+<div className="submenu">
+
+<div className="menu-item">Customer Master</div>
+<div className="menu-item">Branch Master</div>
+<div className="menu-item">Account Type Master</div>
+
+</div>
+
+)}
+
+</>
+
+)}
+
+
+{/* TRANSACTIONS */}
+
+{(role === "admin" || role === "employee") && (
+
+<>
+
+<div
+className="menu-title"
+onClick={()=>setTransactionsOpen(!transactionsOpen)}
+>
+
+Transactions
+
+<span className="arrow">
+{transactionsOpen ? <FaChevronDown/> : <FaChevronRight/>}
+</span>
+
+</div>
+
+{transactionsOpen && !collapsed && (
+
+<div className="submenu">
+
+<div className="menu-item">Customer Registration</div>
+<div className="menu-item">Account Opening</div>
+<div className="menu-item">Deposit</div>
+<div className="menu-item">Withdrawal</div>
+<div className="menu-item">Fund Transfer</div>
+
+</div>
+
+)}
+
+</>
+
+)}
+
+
+{/* LOGOUT */}
+
+<div className="menu-item logout" onClick={logout}>
+Logout
+</div>
+
+</div>
+
+);
+
+};
+
+export default Sidebar;
+
+
+
 1️⃣ Admin Login
 
 Purpose: System management
