@@ -17,18 +17,22 @@ z-index:1000;
 display:flex;
 align-items:center;
 gap:15px;
+
 }
+
 
 .user-email{
 color:#2f4f7f;
 font-weight:500;
 font-size:15px;
+
 }
 
 .logout-icon{
 color:#e74c3c;
 cursor:pointer;
 font-size:20px;
+display: flex;
 }
 .dashboard-layout{
 display:flex;

@@ -42,6 +42,7 @@ Utility Bank
 
 <span className="user-email">{email}</span>
 
+
 <FaPowerOff
 className="logout-icon"
 title="Logout"
