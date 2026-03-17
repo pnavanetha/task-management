@@ -1,46 +1,38 @@
-// import React from "react";
-// import { FaTachometerAlt, FaDatabase, FaExchangeAlt, FaEye, FaFileAlt } from "react-icons/fa";
-// import "./sidebar.css";
+import { FaPowerOff } from "react-icons/fa";
 
-// const SideNavigation = () => {
-//   return (
-//     <div className="sidebar">
+const Header = () => {
 
-//       <h2 className="logo">Bank App</h2>
+const email = localStorage.getItem("email");
 
-//       <ul className="menu">
+const logout = () => {
+localStorage.clear();
+window.location.href = "/";
+};
 
-//         <li>
-//           <FaTachometerAlt />
-//           <span>Dashboard</span>
-//         </li>
+return (
 
-//         <li className="menu-title">Masters</li>
-//         <li>Customer Master</li>
-//         <li>Branch Master</li>
-//         <li>Account Type Master</li>
+<div className="header">
 
-//         <li className="menu-title">Transactions</li>
-//         <li>Customer Registration</li>
-//         <li>Account Opening</li>
-//         <li>Deposit</li>
-//         <li>Withdrawal</li>
-//         <li>Fund Transfer</li>
+<div className="header-left">
+<h2>Utility Bank</h2>
+</div>
 
-//         <li className="menu-title">Views</li>
-//         <li>Customer Details</li>
-//         <li>Account Summary</li>
-//         <li>Transaction History</li>
+<div className="header-right">
 
-//         <li className="menu-title">Reports</li>
-//         <li>Account Statement</li>
-//         <li>Daily Transactions</li>
-//         <li>Customer Report</li>
+<span className="user-email">{email}</span>
 
-//       </ul>
+<FaPowerOff
+className="logout-icon"
+title="Logout"
+onClick={logout}
+/>
 
-//     </div>
-//   );
-// };
+</div>
 
-// export default SideNavigation;
+</div>
+
+);
+
+};
+
+export default Header;

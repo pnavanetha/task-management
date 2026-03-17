@@ -1,7 +1,7 @@
-body{
+/* body{
 margin:0;
 padding:0;
-}
+} */
 .login-container{
 height:100vh;
 width:150%;
@@ -54,8 +54,9 @@ margin-bottom:20px;
 }
 
 .forgot{
-color:#7b3fe4;
+color:#692e07;
 cursor:pointer;
+font-weight:400;
 }
 
 .login-btn{
@@ -63,7 +64,7 @@ width:100%;
 padding:12px;
 border:none;
 border-radius:25px;
-background:linear-gradient(90deg,#7b3fe4,#4b2be3);
+background:linear-gradient(90deg,#7c3a0e,#e09f74);
 color:white;
 font-weight:bold;
 cursor:pointer;
@@ -75,15 +76,16 @@ margin-top:20px;
 }
 
 .create span{
-color:#7b3fe4;
+color:#692e07;
 cursor:pointer;
+font-weight:400;
 }
 
 /* RIGHT */
 
 .login-right{
 width:50%;
-background:linear-gradient(135deg,#7b3fe4,#4b2be3);
+background:linear-gradient(135deg,#7c3a0e,#e09f74);
 color:white;
 display:flex;
 flex-direction:column;

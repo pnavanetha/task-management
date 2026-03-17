@@ -1,16 +1,15 @@
 .sidebar{
 width:200px;
-height:100vh;
-background:#3b7d59;
-color:white;
+height:calc(100vh - 60px);
+background:rgb(240, 240, 240);
+color:rgb(20, 8, 8);
 padding:20px;
 transition:0.3s;
 position:fixed;
 left:0;
-top:0;
+top:60px;
+position: fixed;
 }
-
-
 
 .sidebar.collapsed{
 width:70px;
@@ -39,7 +38,7 @@ font-size:20px;
 /* MENU */
 
 .menu-title{
-background:#2f6849;
+background:#eee9e5;
 padding:10px;
 margin-bottom:10px;
 cursor:pointer;
@@ -47,9 +46,9 @@ display:flex;
 justify-content:space-between;
 border-radius:5px;
 }
-
-
-/* SUBMENU */
+.menu-title:hover{
+background: #c08862;
+}
 
 .submenu{
 margin-left:10px;
@@ -58,9 +57,13 @@ margin-left:10px;
 .menu-item{
 padding:8px;
 margin-bottom:6px;
-background:#3f815c;
+background:#fff;
 border-radius:4px;
 cursor:pointer;
+
+}
+.menu-item:hover{
+background:#e09f74;
 }
 
 
