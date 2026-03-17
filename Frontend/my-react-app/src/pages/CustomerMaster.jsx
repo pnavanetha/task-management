@@ -297,17 +297,17 @@ return(
 <div className="master-header">
 
 <h2>Customer Master</h2>
+</div>
 
+<div>
 <button
 className="add-btn"
 onClick={()=>setShowPopup(true)}
 >
 + Add
 </button>
-
 </div>
 
-{/* SEARCH */}
 
 <div className="master-toolbar">
 

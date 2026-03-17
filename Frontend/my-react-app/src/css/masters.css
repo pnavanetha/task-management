@@ -7,7 +7,7 @@ width:100%;
 .master-header{
 background:#c08a61;
 color:white;
-padding:15px 20px;
+padding:0px 15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -18,12 +18,13 @@ margin-bottom:15px;
 /* ADD BUTTON */
 
 .add-btn{
-background:#3b7d59;
+background:#c08a61;
 color:white;
 border:none;
 padding:8px 15px;
 border-radius:4px;
 cursor:pointer;
+float: right;
 }
 
 /* TOOLBAR */
