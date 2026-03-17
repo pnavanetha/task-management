@@ -1,196 +1,61 @@
-import { useState, useRef } from "react";
-import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-alpine.css";
+import { FaPowerOff } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-import Layout from "../components/Layout";
-import "../css/masters.css";
+const Header = () => {
 
-const CustomerMaster = () => {
+const email = localStorage.getItem("email");
+const role = localStorage.getItem("role");
 
-const gridRef = useRef();
+const navigate = useNavigate();
 
-const [customers,setCustomers] = useState([]);
-const [showPopup,setShowPopup] = useState(false);
-
-const [form,setForm] = useState({
-firstName:"",
-lastName:"",
-mobile:"",
-email:"",
-city:"",
-state:"",
-status:"Active"
-});
-
-const columnDefs = [
-
-{ headerName:"ID", field:"id", sortable:true, filter:true },
-
-{ headerName:"First Name", field:"firstName", sortable:true, filter:true },
-
-{ headerName:"Last Name", field:"lastName", sortable:true, filter:true },
-
-{ headerName:"Mobile", field:"mobile", sortable:true, filter:true },
-
-{ headerName:"Email", field:"email", sortable:true, filter:true },
-
-{ headerName:"City", field:"city", sortable:true, filter:true },
-
-{ headerName:"Status", field:"status", sortable:true, filter:true }
-
-];
-
-const defaultColDef = {
-flex:1,
-resizable:true
+const logout = () => {
+localStorage.clear();
+window.location.href = "/";
 };
 
-const handleChange=(e)=>{
-setForm({...form,[e.target.name]:e.target.value});
-};
+const goToDashboard = () => {
 
-const saveCustomer=()=>{
-
-const newCustomer = {
-id: customers.length + 1,
-...form
-};
-
-setCustomers([...customers,newCustomer]);
-
-setShowPopup(false);
-
-setForm({
-firstName:"",
-lastName:"",
-mobile:"",
-email:"",
-city:"",
-state:"",
-status:"Active"
-});
+if(role === "admin"){
+    navigate("/admin-dashboard");
+}
+else if(role === "manager"){
+    navigate("/employee");
+}
+else if(role === "user"){
+    navigate("/customer");
+}
+else{
+    navigate("/");
+}
 
 };
 
-const onSearch=(e)=>{
-gridRef.current.api.setQuickFilter(e.target.value);
-};
+return (
 
-return(
+<div className="header">
 
-<Layout>
-
-<div className="page-header">
-
-<h2>Customer Master</h2>
-
-<button
-className="add-btn"
-onClick={()=>setShowPopup(true)}
->
-+ Add
-</button>
-
+<div className="header-left">
+<h2 onClick={goToDashboard} style={{cursor:"pointer"}}>
+Utility Bank
+</h2>
 </div>
 
-{/* SEARCH */}
+<div className="header-right">
 
-<div className="grid-top">
+<span className="user-email">{email}</span>
 
-<input
-type="text"
-placeholder="Search..."
-className="search-box"
-onChange={onSearch}
+<FaPowerOff
+className="logout-icon"
+title="Logout"
+onClick={logout}
 />
 
 </div>
 
-{/* GRID */}
-
-<div
-className="ag-theme-alpine"
-style={{height:"500px",width:"100%"}}
->
-
-<AgGridReact
-ref={gridRef}
-rowData={customers}
-columnDefs={columnDefs}
-defaultColDef={defaultColDef}
-pagination={true}
-paginationPageSize={10}
-/>
-
 </div>
-
-
-
-
-{showPopup && (
-
-<div className="modal-overlay">
-
-<div className="modal">
-
-<div className="modal-header">
-
-<h3>Add Customer</h3>
-
-<button
-className="close-btn"
-onClick={()=>setShowPopup(false)}
->
-X
-</button>
-
-</div>
-
-<div className="modal-body">
-
-<input name="firstName" placeholder="First Name" onChange={handleChange}/>
-<input name="lastName" placeholder="Last Name" onChange={handleChange}/>
-<input name="mobile" placeholder="Mobile" onChange={handleChange}/>
-<input name="email" placeholder="Email" onChange={handleChange}/>
-<input name="city" placeholder="City" onChange={handleChange}/>
-<input name="state" placeholder="State" onChange={handleChange}/>
-
-<select name="status" onChange={handleChange}>
-<option>Active</option>
-<option>Inactive</option>
-</select>
-
-</div>
-
-<div className="modal-footer">
-
-<button
-className="submit-btn"
-onClick={saveCustomer}
->
-Submit
-</button>
-
-<button
-className="close-btn2"
-onClick={()=>setShowPopup(false)}
->
-Close
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-)}
-
-</Layout>
 
 );
 
 };
 
-export default CustomerMaster;
+export default Header;

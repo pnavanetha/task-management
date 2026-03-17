@@ -1,16 +1,19 @@
 .dashboard-layout{
-display:flex;
-
+  display:flex;
+  
 }
 
 .dashboard-content{
-margin-left:260px;
-padding:30px;
-width:100%;
+  margin-left:200px;
+  padding:20px;
+  transition:0.3s;
 }
 
 /* when sidebar collapsed */
 
 .sidebar.collapsed + .dashboard-content{
-margin: left 100px;
+  margin-left:70px;
+}
+body {
+  overflow-y: hidden;
 }

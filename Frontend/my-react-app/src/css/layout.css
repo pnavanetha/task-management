@@ -1,5 +1,3 @@
-/* HEADER */
-
 .header{
 position:fixed;
 top:0;
@@ -15,15 +13,11 @@ padding:0 20px;
 z-index:1000;
 }
 
-/* RIGHT SIDE HEADER */
-
 .header-right{
 display:flex;
 align-items:center;
 gap:15px;
 }
-
-
 
 .user-email{
 color:#2f4f7f;
@@ -31,33 +25,33 @@ font-weight:500;
 font-size:15px;
 }
 
-/* LOGOUT ICON */
-
 .logout-icon{
 color:#e74c3c;
 cursor:pointer;
 font-size:20px;
 }
+.dashboard-layout{
+display:flex;
+width:100%;
+min-height:100vh;
+}
 
-/* SIDEBAR */
 
-/* .sidebar{
-position:fixed;
-top:60px;
-left:0;
-width:260px;
-height:calc(100vh - 60px);
-background:#3b7d59;
-} */
+.sidebar{
+width:200px;
+transition:0.3s;
+flex-shrink:0;
 
-/* MAIN CONTENT */
+}
+
+.sidebar.collapsed{
+width:70px;
+}
+
 
 .main-content{
-margin-left:260px;
+flex:1;
 margin-top:60px;
-padding:25px;
-height:calc(100vh - 60px);
-/* overflow:auto; */
+padding:20px;
 background:#f4f6f9;
-box-sizing:border-box;
 }

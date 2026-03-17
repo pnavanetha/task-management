@@ -1,22 +1,18 @@
-.sidebar{
+/* .sidebar{
 width:200px;
 height:calc(100vh - 60px);
 background:rgb(240, 240, 240);
 color:rgb(20, 8, 8);
-padding:20px;
+padding:15px;
 transition:0.3s;
 position:fixed;
 left:0;
 top:60px;
-position: fixed;
+overflow:hidden;
 }
-
 .sidebar.collapsed{
 width:70px;
 }
-
-
-
 .sidebar-header{
 display:flex;
 justify-content:space-between;
@@ -29,13 +25,12 @@ cursor:pointer;
 font-size:18px;
 }
 
-/* LOGO */
-
 .logo{
-font-size:20px;
+  font-size:20px;
+  font-weight:600;
+  white-space:nowrap;
 }
 
-/* MENU */
 
 .menu-title{
 background:#eee9e5;
@@ -96,4 +91,122 @@ display:none;
 
 .sidebar.collapsed .menu-item{
 text-align:center;
+} */
+
+.sidebar{
+  width:200px;
+  height:calc(100vh - 60px);
+  background:rgb(240,240,240);
+  color:#140808;
+  padding:15px;
+  transition:0.3s;
+  position:relative;
+  left:0;
+  top:60px;
+  overflow:hidden;
+  flex-shrink:0;
+  box-shadow:2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar.collapsed{
+  width:70px;
+}
+
+/* HEADER */
+
+.sidebar-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* MENU TITLE */
+
+.menu-title{
+  background:#eee9e5;
+  padding:10px;
+  margin-bottom:10px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-radius:5px;
+}
+
+.menu-title:hover{
+  background:#c08862;
+}
+
+/* LEFT ICON + TEXT */
+
+.menu-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  white-space:nowrap;
+}
+
+.menu-icon{
+  font-size:18px;
+  min-width:20px;
+  text-align:center;
+}
+
+/* SUB MENU */
+
+.submenu{
+  margin-left:10px;
+}
+
+.menu-item{
+  padding:8px;
+  margin-bottom:6px;
+  background:#fff;
+  border-radius:4px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.menu-item:hover{
+  background:#e09f74;
+}
+
+/* LOGOUT */
+
+.logout{
+  margin-top:20px;
+  background:#a94442;
+  color:white;
+  text-align:center;
+}
+
+/* COLLAPSE MODE */
+
+.sidebar.collapsed .menu-left span{
+  display:none;
+}
+
+.sidebar.collapsed .arrow{
+  display:none;
+}
+
+.sidebar.collapsed .submenu{
+  display:none;
+}
+
+.sidebar.collapsed .menu-item{
+  text-align:center;
+}
+.menu-left span{
+white-space:nowrap;
+}
+.sidebar.collapsed{
+width:70px;
 }

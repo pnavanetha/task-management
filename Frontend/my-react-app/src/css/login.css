@@ -4,7 +4,7 @@ padding:0;
 } */
 .login-container{
 height:100vh;
-width:150%;
+/* width:150%; */
 display:flex;
 justify-content:center;
 align-items:center;
@@ -12,7 +12,7 @@ position:relative;
 }
 
 .login-card{
-width:900px;
+width:800px;
 max-width:95%;
 display:flex;
 background:white;

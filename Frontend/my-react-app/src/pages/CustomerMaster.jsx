@@ -290,7 +290,11 @@ return(
 
 <Layout>
 
-<div className="page-header">
+<div className="master-page">
+
+{/* HEADER */}
+
+<div className="master-header">
 
 <h2>Customer Master</h2>
 
@@ -305,7 +309,7 @@ onClick={()=>setShowPopup(true)}
 
 {/* SEARCH */}
 
-<div className="grid-top">
+<div className="master-toolbar">
 
 <input
 type="text"
@@ -319,8 +323,8 @@ onChange={onSearch}
 {/* GRID */}
 
 <div
-className="ag-theme-alpine"
-style={{height:"500px",width:"100%"}}
+className="master-grid"
+style={{height:"500px"}}
 >
 
 <AgGridReact
@@ -334,8 +338,9 @@ paginationPageSize={10}
 
 </div>
 
+</div>
 
-
+{/* POPUP */}
 
 {showPopup && (
 

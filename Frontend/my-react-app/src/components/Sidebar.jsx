@@ -128,12 +128,12 @@ import { MdDashboard, MdAccountTree, MdSyncAlt, MdVisibility, MdAssessment } fro
 import "./sidebar.css";
 import { useNavigate } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ collapsed, setCollapsed }) => {
 
 const role = localStorage.getItem("role");
 const navigate = useNavigate();
 
-const [collapsed,setCollapsed] = useState(false);
+// const [collapsed,setCollapsed] = useState(false);
 const [mastersOpen, setMastersOpen] = useState(false);
 const [transactionsOpen, setTransactionsOpen] = useState(false);
 const [viewsOpen, setViewsOpen] = useState(false);
@@ -146,7 +146,7 @@ window.location.href = "/";
 };
 
 return (
-<div className={`sidebar ${collapsed ? "collapsed":""}`}>
+<div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
 
 <div className="sidebar-header">
 

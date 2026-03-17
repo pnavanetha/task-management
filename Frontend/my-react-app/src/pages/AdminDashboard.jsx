@@ -1,4 +1,4 @@
-import Sidebar from "../components/Sidebar";
+// import Sidebar from "../components/Sidebar";
 import Layout from "../components/Layout";
 import "../css/dashboard.css";
 
@@ -8,7 +8,7 @@ return (
 
 <div className="dashboard-layout">
 
-<Sidebar />
+{/* <Sidebar /> */}
 <Layout>
 <div className="dashboard-content">
 
